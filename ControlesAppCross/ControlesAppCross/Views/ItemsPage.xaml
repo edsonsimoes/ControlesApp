@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="ControlesAppCross.Views.ItemsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
   <ContentPage.Content>
     <StackLayout>
+            <xForms:SfListView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionChanged="ItemsListView_SelectionChanged" Margin="0,15,0,0">
+                <xForms:SfListView.LayoutManager>
+                    <xForms:GridLayout SpanCount="3"   />
+
+                </xForms:SfListView.LayoutManager>
+                <xForms:SfListView.ItemSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <OnPlatform.Android>
+                            <OnIdiom x:TypeArguments="x:Double" Phone="150" Tablet="150" />
+                        </OnPlatform.Android>
+                        <OnPlatform.iOS>
+                            <OnIdiom x:TypeArguments="x:Double" Phone="150" Tablet="170" />
+                        </OnPlatform.iOS>
+                    </OnPlatform>
+                </xForms:SfListView.ItemSize>
+                <xForms:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <StackLayout Grid.Row="2" Orientation="Vertical" Padding="5" >
+                                <Image Source="{Binding pathImage}" Grid.Row="1"
+                       HeightRequest="30" WidthRequest="30"/>
+                                <Label Text="{Binding Text}" HorizontalTextAlignment="Center" 
+                       HorizontalOptions="Center"
+                       LineBreakMode="WordWrap"
+                       Style="{DynamicResource ListItemTextStyle}"
+                       FontSize="14"/>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </xForms:SfListView.ItemTemplate>
+            </xForms:SfListView>
+        <!--
       <ListView x:Name="ItemsListView"
 				ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -32,7 +67,7 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+      </ListView>-->
     </StackLayout> 
   </ContentPage.Content>
 </ContentPage>

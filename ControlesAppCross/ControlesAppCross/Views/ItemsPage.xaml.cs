@@ -75,5 +75,49 @@ namespace ControlesAppCross.Views
 			if (viewModel.Items.Count == 0)
 				viewModel.LoadItemsCommand.Execute(null);
 		}
-	}
+
+        private async void ItemsListView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            var item = ItemsListView.SelectedItem as Item;
+            string tipo;
+            tipo = "NaoLidas";
+
+            if (item == null)
+                return;
+            if (item.Text.Contains("Tarefas não Lidas"))
+            {
+                tipo = "NaoLidas";
+            }
+            if (item.Text.Contains("Fazer Hoje"))
+            {
+                tipo = "FazerHoje";
+            }
+            if (item.Text.Contains("Validar"))
+            {
+                tipo = "Validar";
+            }
+            if (item.Text.Contains("Anotações"))
+            {
+                tipo = "Anotar";
+            }
+            if (item.Text.Contains("Atraso"))
+            {
+                tipo = "Atraso";
+            }
+            if (item.Text.Contains("Adicionar"))
+            {
+                tipo = "Adicionar";
+                var url = "http://www.controlesonline.com.br";
+                Device.OpenUri(new Uri(url));
+            }
+
+            if (tipo != "Adicionar")
+            {
+                await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item), tipo, Constants.UserCod.ToString()));
+
+                // Manually deselect item
+                ItemsListView.SelectedItem = null;
+            }
+        }
+    }
 }
