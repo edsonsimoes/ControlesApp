@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="ControlesAppCross.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="5" Padding="15">
+        <Label Text="Periodo e Tipo da Pesquisa" FontSize="Small" HorizontalOptions="Center"></Label>
+
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <DatePicker x:Name="DtInicio" VerticalOptions="Start" Date="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                    <DatePicker.MinimumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Jan 1 2000</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <DatePicker x:Name="DtFinal" VerticalOptions="Start" Date="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                    <DatePicker.MinimumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Jan 1 2000</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button Image="icons8_filter.png" Clicked="OnPesquisarButtonClicked" />
+            </StackLayout>
+        </StackLayout>
+        <Picker x:Name="dropTipos" VerticalOptions="CenterAndExpand">
+            <Picker.Items>
+                <x:String>Tipo Minhas</x:String>
+                <x:String>Tipo Delegadas</x:String>
+            </Picker.Items>
+        </Picker>
+        <Label Text="{Binding Item.Text}" FontSize="Medium"/>
+        <Label x:Name="nrpesq" FontSize="Medium"/>
+        <ListView x:Name="lvTarefas" BackgroundColor="#cdf3ff" HasUnevenRows="True" SeparatorColor="Blue"
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <ListView.ItemTemplate BackgroundColor="#e6ffe6">
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal" Padding="2">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding CodPro}" TextColor="Black" FontSize="Small"/>
+                                <Label Text="{Binding DATA_PROGR, StringFormat='{0:dd-MM-yyyy}'}" TextColor="Black" FontSize="Small"/>
+                                <Label Text="{Binding HISTORICO}" TextColor="Gray" FontSize="Small"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

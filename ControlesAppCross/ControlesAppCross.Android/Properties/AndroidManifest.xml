@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Controles_OnLine.Controles_OnLine" android:installLocation="internalOnly" android:versionCode="8" android:versionName="Oito">
+	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="24" />
+	<application android:label="Controles OnLine" android:icon="@drawable/AgendaOnline"></application>
+</manifest>

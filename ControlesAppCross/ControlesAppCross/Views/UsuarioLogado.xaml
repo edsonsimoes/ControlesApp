@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesAppCross.Views.UsuarioLogado">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Controles On Line App!" TextColor="DarkGray" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label TextColor="Gray" FontSize="Medium" x:Name="UsuarioConectado" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+            <Button Text="Desconectar" Clicked="OnDesconectarButtonClicked" BackgroundColor="OrangeRed" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
